@@ -8,12 +8,10 @@ void main() => {
       MaterialApp(
       title: "Weather-app",
         home: Home(),
-        )
-  )
+        ))
 };
 
 class Home extends StatefulWidget {
-  // This widget is the root of your application.
   @override
   State<StatefulWidget> createState(){
     return _HomeState();
@@ -39,7 +37,6 @@ class _HomeState extends State<Home>{
       this.windSpeed = result['wind']['speed'];
       this.humidity = result['main']['humidity'];
       // this.tempFar = (this.temp * 9/5) + 32;
-
     });
   }
   @override
