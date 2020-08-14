@@ -21,13 +21,14 @@ class Home extends StatefulWidget {
 }
 class _HomeState extends State<Home>{
   var temp;
+  var tempFar;
   var description;
   var currently;
   var windSpeed;
   var humidity;
 
   Future getWeather () async{
-    http.Response response = await http.get('http://api.openweathermap.org/data/2.5/weather?q=Boston&appid=7ae0689e14bf22ab69b335616daf6844');
+    http.Response response = await http.get('http://api.openweathermap.org/data/2.5/weather?q=Seattle&appid=7ae0689e14bf22ab69b335616daf6844');
     var result = jsonDecode(response.body);
     print("I am here");
     print(result);
@@ -37,6 +38,7 @@ class _HomeState extends State<Home>{
       this.currently = result['weather'][0]['main'];
       this.windSpeed = result['wind']['speed'];
       this.humidity = result['main']['humidity'];
+      // this.tempFar = (this.temp * 9/5) + 32;
 
     });
   }
@@ -79,7 +81,6 @@ class _HomeState extends State<Home>{
                       color: Colors.white
                   ),),
                 ),
-
               ],
             ),
           ),
