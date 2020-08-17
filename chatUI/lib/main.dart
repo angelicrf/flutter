@@ -11,8 +11,8 @@ class MyApp extends StatelessWidget {
       title: "ChatUI",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.blue,
-        accentColor: Color(0xFFFEF9EB),
+        primaryColor: Colors.red,
+        accentColor: Colors.black26,
     ),
     home: HomeScreen(),
     );
