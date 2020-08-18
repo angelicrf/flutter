@@ -1,7 +1,6 @@
 import 'package:chatUI/chat_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'message_model.dart';
 
 class RecentChats extends StatelessWidget {
@@ -50,7 +49,6 @@ class RecentChats extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
-
                                 Text(chat.text)
                               ],
                             ),

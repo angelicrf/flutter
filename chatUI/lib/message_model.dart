@@ -1,6 +1,4 @@
 import 'dart:core';
-import 'dart:core';
-
 import 'package:chatUI/user_model.dart';
 
 class Message {
@@ -20,7 +18,7 @@ class Message {
 }
 final User currentUser = User(
   id: 0,
-  name: "Current User",
+  name: "Anna",
   imageUrl: "assets/images/user1.jpg",
 );
 final User greg = User(
@@ -58,8 +56,15 @@ final User steven = User(
   name: "Steven",
   imageUrl: "assets/images/steven.jpg",
 );
-List<User> favorite = [sam, james, john, olivia, greg, sophia, steven];
+List<User> favorite = [currentUser,sam, james, john, olivia, greg, sophia, steven];
 List<Message> chats = [
+  Message(
+    sender: currentUser,
+    time: '4:30 PM',
+    text: 'Hey how\'s your new job?',
+    isLiked: true,
+    unread: true,
+  ),
   Message(
   sender: james,
   time: '5:30 PM',
@@ -78,7 +83,7 @@ List<Message> chats = [
     sender: john,
     time: '7:30 PM',
     text: 'Hey how\'s your appetite?',
-    isLiked: false,
+    isLiked: true,
     unread: true,
   ),
   Message(
