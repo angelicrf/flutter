@@ -4,10 +4,9 @@ import 'package:chatUI/user_model.dart';
 class Message {
   final User sender;
   final String time;
-  final String text;
+  String text;
   final bool isLiked;
   final bool unread;
-
   Message({
     this.isLiked,
     this.sender,
@@ -61,7 +60,7 @@ List<Message> chats = [
   Message(
     sender: currentUser,
     time: '4:30 PM',
-    text: 'Hey how\'s your new job?',
+    text: "Hey how\'s your new job?",
     isLiked: true,
     unread: true,
   ),

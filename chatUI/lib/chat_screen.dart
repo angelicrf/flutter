@@ -63,11 +63,57 @@ class _ChatScreenState extends State<ChatScreen> {
        ],
      );
   }
+  _buildMessageComposer(){
+    final Message message = chats[0];
+     _sendMessage(){
+      bool isMe = message.sender.id == currentUser.id;
+      print(message.text);
+      return Container(
+      color: Colors.cyanAccent,
+      );
+    }
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 8.0,),
+      height: 70.0,
+      color: Colors.white,
+      child: Row(
+        children: [
+          IconButton(
+            icon: Icon(Icons.photo),
+            onPressed: () {},
+            iconSize: 30.0,
+          ),
+          Expanded(
+            child: Column(
+              children: [
+
+                TextField(
+                        textCapitalization: TextCapitalization.sentences,
+                        onChanged: (value) => {
+                         message.text = value
+                        },
+                        decoration: InputDecoration.collapsed(hintText: "Send a message ...."),
+                      )
+              ],
+            ),),
+          IconButton(
+            icon: Icon(Icons.send),
+            onPressed: () {
+              _sendMessage();
+            },
+            iconSize: 30.0,
+          ),
+        ],
+      ),
+    );
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-    appBar: AppBar(title: Text(widget.user.name, style: TextStyle(
+      appBar: AppBar(title: Text(widget.user.name, style: TextStyle(
       fontSize: 28.0,
       fontWeight: FontWeight.bold,
     ),),
@@ -80,34 +126,41 @@ class _ChatScreenState extends State<ChatScreen> {
         onPressed: () {},
       )
     ],),
-      body: Column(
-        children: [
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                topRight: Radius.circular(20.0),
-                topLeft: Radius.circular(20.0),
-                )
-              ),
-              child: ClipRRect(
+      body: GestureDetector(
+        onTap: () => {
+          FocusScope.of(context).unfocus()
+        },
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20.0),
-                    topLeft: Radius.circular(20.0),
-                  ),
-                child: ListView.builder(
-                    padding: EdgeInsets.only(top: 15.0),
-                    itemCount: chats.length,
-                    itemBuilder: (BuildContext context, int index){
-                      final Message message = chats[index];
-                      bool isMe = message.sender.id == currentUser.id;
-                  return _buildMessage(message, isMe);
-                }),
-              ),
+                  topRight: Radius.circular(20.0),
+                  topLeft: Radius.circular(20.0),
+                  )
+                ),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20.0),
+                      topLeft: Radius.circular(20.0),
+                    ),
+                  child: ListView.builder(
+                      padding: EdgeInsets.only(top: 15.0),
+                      itemCount: chats.length,
+                      itemBuilder: (BuildContext context, int index){
+                        final Message message = chats[index];
+                        bool isMe = message.sender.id == currentUser.id;
+                    return _buildMessage(message, isMe);
+
+                  }),
+                ),
+              )
             ),
-          ),
-        ],
+            _buildMessageComposer()
+          ],
+        ),
       ),
     );
   }
