@@ -15,13 +15,7 @@ class ChatScreen  extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
 
   _buildMessage (Message message, bool isMe) {
-    _createText (){
-      var i;
-      for(i in chats){
-        print(i.text);
-        Text(i.text);
-      }
-    }
+
     final Container msg = Container(
       margin: isMe ? EdgeInsets.only(top: 8.0, bottom: 8.0, left: 80.0) :
       EdgeInsets.only(top: 8.0, bottom: 8.0,),
@@ -68,6 +62,9 @@ class _ChatScreenState extends State<ChatScreen> {
   }
   _buildMessageComposer(){
 
+    final _controller = TextEditingController();
+    User getMessage;
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8.0,),
       height: 70.0,
@@ -91,20 +88,14 @@ class _ChatScreenState extends State<ChatScreen> {
                     itemCount: chats.length,
                     itemBuilder: (BuildContext context, int index){
                       final Message message = chats[index];
+                      getMessage = message.sender;
                       return new TextField(
                         textCapitalization: TextCapitalization.sentences,
                         decoration: InputDecoration.collapsed(hintText: "Send a message ...."),
-                        onChanged: (value) => {
-                          setState(() => {
-                            chats.add(Message(
-                              sender: currentUser,
-                              time:  new DateTime. now().toString(),
-                              text: value,
-                              isLiked: true,
-                              unread: true,
-                            ))
-                          })
-                        },
+                        controller: _controller,
+                        onSubmitted: (value) =>{
+
+                        }
                       );
                     }),
               )
@@ -113,6 +104,16 @@ class _ChatScreenState extends State<ChatScreen> {
           IconButton(
             icon: Icon(Icons.send),
             onPressed: () {
+              setState(() =>
+              {
+                chats.add(Message(
+                  sender: getMessage,
+                  time: new DateTime.now().toString(),
+                  text: _controller.text,
+                  isLiked: true,
+                  unread: true,
+                ))
+              });
               var i;
               for(i in chats){
                 print(i.text);
