@@ -15,6 +15,13 @@ class ChatScreen  extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
 
   _buildMessage (Message message, bool isMe) {
+    _createText (){
+      var i;
+      for(i in chats){
+        print(i.text);
+        Text(i.text);
+      }
+    }
     final Container msg = Container(
       margin: isMe ? EdgeInsets.only(top: 8.0, bottom: 8.0, left: 80.0) :
       EdgeInsets.only(top: 8.0, bottom: 8.0,),
@@ -30,7 +37,6 @@ class _ChatScreenState extends State<ChatScreen> {
             bottomRight: Radius.circular(20.0),
           )
       ),
-
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -40,14 +46,11 @@ class _ChatScreenState extends State<ChatScreen> {
             fontSize: 16.0,
           ),),
           SizedBox(height: 8.0,),
-          Text(message.text, style: TextStyle(
-            color: Colors.deepPurpleAccent,
-            fontWeight: FontWeight.w600,
-            fontSize: 16.0,
-          ),),
+         Text(message.text),
         ],
       ),
     );
+
     if(isMe) {
       return msg;
     }
@@ -64,14 +67,7 @@ class _ChatScreenState extends State<ChatScreen> {
      );
   }
   _buildMessageComposer(){
-    final Message message = chats[0];
-     _sendMessage(){
-      bool isMe = message.sender.id == currentUser.id;
-      print(message.text);
-      return Container(
-      color: Colors.cyanAccent,
-      );
-    }
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8.0,),
       height: 70.0,
@@ -86,20 +82,43 @@ class _ChatScreenState extends State<ChatScreen> {
           Expanded(
             child: Column(
               children: [
-
-                TextField(
+              SizedBox(
+              height: 30,
+                child:
+                ListView.builder(
+                    //shrinkWrap: true,
+                    padding: EdgeInsets.only(top: 5.0, bottom: 30.0),
+                    itemCount: chats.length,
+                    itemBuilder: (BuildContext context, int index){
+                      final Message message = chats[index];
+                      return new TextField(
                         textCapitalization: TextCapitalization.sentences,
-                        onChanged: (value) => {
-                         message.text = value
-                        },
                         decoration: InputDecoration.collapsed(hintText: "Send a message ...."),
-                      )
+                        onChanged: (value) => {
+                          setState(() => {
+                            chats.add(Message(
+                              sender: currentUser,
+                              time:  new DateTime. now().toString(),
+                              text: value,
+                              isLiked: true,
+                              unread: true,
+                            ))
+                          })
+                        },
+                      );
+                    }),
+              )
               ],
             ),),
           IconButton(
             icon: Icon(Icons.send),
             onPressed: () {
-              _sendMessage();
+              var i;
+              for(i in chats){
+                print(i.text);
+              }
+             bool isMe = i.sender.id == currentUser.id;
+              _buildMessage(i, isMe);
             },
             iconSize: 30.0,
           ),
@@ -126,42 +145,45 @@ class _ChatScreenState extends State<ChatScreen> {
         onPressed: () {},
       )
     ],),
-      body: GestureDetector(
-        onTap: () => {
-          FocusScope.of(context).unfocus()
-        },
-        child: Column(
-          children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(20.0),
-                  topLeft: Radius.circular(20.0),
-                  )
-                ),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.only(
+      body:
+          GestureDetector(
+            onTap: () => {
+              FocusScope.of(context).unfocus()
+            },
+            child: Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
                       topRight: Radius.circular(20.0),
                       topLeft: Radius.circular(20.0),
+                      )
                     ),
-                  child: ListView.builder(
-                      padding: EdgeInsets.only(top: 15.0),
-                      itemCount: chats.length,
-                      itemBuilder: (BuildContext context, int index){
-                        final Message message = chats[index];
-                        bool isMe = message.sender.id == currentUser.id;
-                    return _buildMessage(message, isMe);
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(20.0),
+                          topLeft: Radius.circular(20.0),
+                        ),
+                      child: ListView.builder(
+                          padding: EdgeInsets.only(top: 15.0),
+                          itemCount: chats.length,
+                          itemBuilder: (BuildContext context, int index){
+                            final Message message = chats[index];
+                            bool isMe = message.sender.id == currentUser.id;
+                        return _buildMessage(message, isMe);
 
-                  }),
+                      }),
+                    ),
+                  )
                 ),
-              )
+                _buildMessageComposer()
+             ]
             ),
-            _buildMessageComposer()
-          ],
-        ),
-      ),
+          ),
+
+
     );
   }
 }
