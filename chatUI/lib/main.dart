@@ -1,7 +1,11 @@
+import 'package:chatUI/Auth/sign_in.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import './home_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -14,7 +18,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.red,
         accentColor: Colors.black26,
     ),
-    home: HomeScreen(),
+    home: SignIn(),
     );
   }
 }

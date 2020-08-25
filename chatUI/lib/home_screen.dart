@@ -1,9 +1,11 @@
 import 'dart:ui';
+import 'package:chatUI/Auth/sign_in.dart';
+import 'package:chatUI/category_selector.dart';
 import 'package:chatUI/favorites_contacts.dart';
 import 'package:chatUI/recent_chats.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './category_selector.dart';
+import './Auth/sign_in.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -42,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
           CategorySelector(),
           Container(
             height: 500.0,
-            margin: EdgeInsets.only(bottom: 25.0),
+            //margin: EdgeInsets.only(bottom: 25.0),
               decoration: BoxDecoration(
                 color: Color.fromARGB(255,233,227,227),
                 borderRadius: BorderRadius.only(
@@ -52,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 children: <Widget>[
                   FavoriteContacts(),
-                  RecentChats()
+                  RecentChats(),
                 ],
               ),
           ),

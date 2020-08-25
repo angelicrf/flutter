@@ -27,7 +27,6 @@ class _CategorySelectorState extends State<CategorySelector> {
                   selectedIndex = index;
               });
             },
-
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 20.0,

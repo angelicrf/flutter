@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "597754363034",
+    "firebase_url": "https://chatui-2bd64.firebaseio.com",
+    "project_id": "chatui-2bd64",
+    "storage_bucket": "chatui-2bd64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597754363034:android:cc599607880ed66eccb323",
+        "android_client_info": {
+          "package_name": "com.example.chatUI"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "597754363034-dc7qdhecefjs6fo8ll01tbtmvu33p831.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF9IbQ1lDHy9d4YHij32AovcRnBgc_768"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "597754363034-dc7qdhecefjs6fo8ll01tbtmvu33p831.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
