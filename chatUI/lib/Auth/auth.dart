@@ -1,11 +1,40 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 class AuthService{
+  var userName;
+  var password;
+  AuthService(String userName, String password){
+    this.userName = userName;
+    this.password = password;
+  }
   FirebaseAuth auth = FirebaseAuth.instance;
 
-   Future sgininEmail() async{
-    try {
+  Future registerUser(){
+    try{
+      FirebaseFirestore.instance.collection('users').add(
+          {
+            "name" : this.userName,
+            "password" : this.password,
+            "address" : {
+              "street" : "default",
+              "city" : "default"
+            }
+          }).then((value){
+       return print(value.toString());
+      });
+    }on FirebaseFirestore
+    catch(e){
+      print(e.toString());
+    }
+  }
+
+  Future sgininEmail() async{
+   if(this.userName == "anna.holmes@gmail.com") {
+     try {
+       //print(userName);
+      //print(password);
       UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: "anna.holmes@gmail.com",
           password: "123456"
@@ -23,7 +52,8 @@ class AuthService{
         return print('Wrong password provided for that user.');
       }
       else return print(e.toString());
-    }
+    }} else
+      return registerUser();
   }
   Future signinAnon() async {
     try{

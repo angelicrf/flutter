@@ -126,7 +126,6 @@ class _ChatScreenState extends State<ChatScreen> {
         ],
       ),
     );
-
   }
 
   @override
@@ -174,7 +173,6 @@ class _ChatScreenState extends State<ChatScreen> {
                             final Message message = chats[index];
                             bool isMe = message.sender.id == currentUser.id;
                         return _buildMessage(message, isMe);
-
                       }),
                     ),
                   )
@@ -183,8 +181,6 @@ class _ChatScreenState extends State<ChatScreen> {
              ]
             ),
           ),
-
-
     );
   }
 }
