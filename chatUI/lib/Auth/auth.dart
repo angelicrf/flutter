@@ -1,3 +1,5 @@
+//import 'dart:html';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -5,12 +7,31 @@ import 'package:firebase_core/firebase_core.dart';
 class AuthService{
   var userName;
   var password;
+  List<String> existUser2 = new List();
+
   AuthService(String userName, String password){
     this.userName = userName;
     this.password = password;
+   // getData();
+    //print(getData());
   }
   FirebaseAuth auth = FirebaseAuth.instance;
 
+   Future<List<String>> getData()async{
+     List<String> existUser = new List();
+      await FirebaseFirestore.instance
+        .collection('users')
+        .get()
+        .then((QuerySnapshot querySnapshot) => {
+          querySnapshot.docs.forEach((doc) {
+            existUser.add(doc.data()["name"]);
+            return existUser;
+           })
+        });
+      this.existUser2 = existUser;
+     print("the value is $existUser");
+      return existUser2;
+    }
   Future registerUser(){
     try{
       FirebaseFirestore.instance.collection('users').add(
@@ -22,19 +43,17 @@ class AuthService{
               "city" : "default"
             }
           }).then((value){
-       return print(value.toString());
+       return value;
       });
     }on FirebaseFirestore
     catch(e){
       print(e.toString());
     }
   }
-
   Future sgininEmail() async{
-   if(this.userName == "anna.holmes@gmail.com") {
+     var dt = await getData();
+   if(existUser2.contains("anna.holmes@gmail.com")) {
      try {
-       //print(userName);
-      //print(password);
       UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: "anna.holmes@gmail.com",
           password: "123456"

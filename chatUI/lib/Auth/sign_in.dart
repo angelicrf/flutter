@@ -1,3 +1,4 @@
+import 'package:chatUI/get_firestore_data.dart';
 import 'package:chatUI/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +43,7 @@ class _SignInState extends State<SignIn> {
                       final Message chat = chats[index];
                       AuthService ath = AuthService(myController.toString(),myController_2.text.toString());
                       await ath.signinAnon();
+                      //await ath.getData();
                       Navigator.push(context, MaterialPageRoute(builder: (_) =>
                           HomeScreen()));
                     },
@@ -63,7 +65,6 @@ class _SignInState extends State<SignIn> {
                   onPressed: () async{
                   final Message chat = chats[index];
                   AuthService ath = AuthService(myController.text.toString(), myController_2.text.toString());
-                  //ath.registerUser();
                   await ath.sgininEmail();
                   Navigator.push(context, MaterialPageRoute(builder: (_) =>
                   HomeScreen()));
