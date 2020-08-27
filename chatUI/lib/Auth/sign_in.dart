@@ -1,10 +1,7 @@
-import 'package:chatUI/get_firestore_data.dart';
+//import 'package:chatUI/get_firestore_data.dart';
 import 'package:chatUI/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import '../chat_screen.dart';
 import '../message_model.dart';
 import 'auth.dart';
 
@@ -20,18 +17,18 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     final myController = TextEditingController();
     final myController_2 = TextEditingController();
+    Message showMs = new Message();
+    showMs.getUserInfo();
 
     return GestureDetector(
-
-      child: Container(
+          child: Container(
         color: Colors.deepPurpleAccent,
         //margin: EdgeInsets.symmetric(horizontal: 40, vertical: 50),
         height: 80,
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
-
         child:
           PageView.builder(
-              itemCount: chats.length,
+              itemCount: chatsList.length,
               itemBuilder: (BuildContext context, int index){
             return  Scaffold(
               backgroundColor: Colors.greenAccent,
@@ -40,8 +37,9 @@ class _SignInState extends State<SignIn> {
                   RaisedButton(
                     child: Text("SignIn Anonymously"),
                     onPressed: () async{
-                      final Message chat = chats[index];
-                      AuthService ath = AuthService(myController.toString(),myController_2.text.toString());
+                      //Message showMs = new Message();
+
+                      AuthService ath = AuthService(myController.toString(),myController_2.text.toString(),[]);
                       await ath.signinAnon();
                       //await ath.getData();
                       Navigator.push(context, MaterialPageRoute(builder: (_) =>
@@ -63,8 +61,8 @@ class _SignInState extends State<SignIn> {
                   RaisedButton(
                   child: Text("SignIn with email-password"),
                   onPressed: () async{
-                  final Message chat = chats[index];
-                  AuthService ath = AuthService(myController.text.toString(), myController_2.text.toString());
+                  final Message chat = chatsList[index];
+                  AuthService ath = AuthService(myController.text.toString(), myController_2.text.toString(),[]);
                   await ath.sgininEmail();
                   Navigator.push(context, MaterialPageRoute(builder: (_) =>
                   HomeScreen()));

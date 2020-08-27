@@ -15,9 +15,9 @@ class RecentChats extends StatelessWidget {
                   topRight: Radius.circular(30.0))
           ),
           child: ListView.builder(
-              itemCount: chats.length,
+              itemCount: chatsList.length,
               itemBuilder: (BuildContext context, int index){
-                final Message chat = chats[index];
+                final Message chat = chatsList[index];
                 return GestureDetector(
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) =>
                       ChatScreen(user: chat.sender))),

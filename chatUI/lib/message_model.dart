@@ -1,21 +1,57 @@
 import 'dart:core';
+import 'package:chatUI/Auth/auth.dart';
 import 'package:chatUI/user_model.dart';
 
+AuthService authServ = new AuthService("", "",[]);
+User currentUsr;
+List<User> favoriteList = new List();
+List<Message> chatsList = new List();
+
 class Message {
+
   final User sender;
   final String time;
   final String text;
   final bool isLiked;
   final bool unread;
+
   Message({
     this.isLiked,
     this.sender,
     this.text,
     this.time,
     this.unread,
-});
+  });
+
+  getUserInfo() {
+    authServ.getData();
+    authServ.existUser2.forEach((element) {
+      print("the elements are $element");
+
+      final User currentUser = User(
+        id: 0,
+        name: element,
+        imageUrl: "assets/images/user1.jpg",
+      );
+      currentUsr = currentUser;
+      List<User> favorite = [currentUser];
+      favoriteList = favorite;
+      List<Message> chats = [
+        Message(
+          sender: currentUser,
+          time: '4:30 PM',
+          text: "Hey how\'s your new job?",
+          isLiked: true,
+          unread: true,
+        )
+      ];
+      chatsList = chats;
+      return chatsList;
+      //,sam, james, john, olivia, greg, sophia, steven;
+    });
+  }
 }
-final User currentUser = User(
+/*final User currentUser = User(
   id: 0,
   name: "Anna",
   imageUrl: "assets/images/user1.jpg",
@@ -54,8 +90,9 @@ final User steven = User(
   id: 7,
   name: "Steven",
   imageUrl: "assets/images/steven.jpg",
-);
-List<User> favorite = [currentUser,sam, james, john, olivia, greg, sophia, steven];
+);*/
+
+/*
 List<Message> chats = [
   Message(
     sender: currentUser,
@@ -113,4 +150,4 @@ List<Message> chats = [
     isLiked: false,
     unread: true,
   ),
-];
+];*/

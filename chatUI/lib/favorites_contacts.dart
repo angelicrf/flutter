@@ -38,22 +38,22 @@ class FavoriteContacts extends StatelessWidget {
                   height: 120.0,
                   child: ListView.builder(
                     padding: EdgeInsets.only(left: 10.0),
-                      itemCount: favorite.length,
+                      itemCount: favoriteList.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (BuildContext context, int index) {
                         return GestureDetector(
                           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) =>
-                              ChatScreen(user: favorite[index]))),
+                              ChatScreen(user: favoriteList[index]))),
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Column(
                               children: <Widget>[
                                 CircleAvatar(
                                   radius: 25.0,
-                                  backgroundImage: AssetImage(favorite[index].imageUrl),
+                                  backgroundImage: AssetImage(favoriteList[index].imageUrl),
                                 ),
                                 SizedBox(height: 6.0),
-                                Text(favorite[index].name,
+                                Text(favoriteList[index].name,
                                   style: TextStyle(
                                       color: Colors.blueGrey,
                                       fontSize: 16.0,

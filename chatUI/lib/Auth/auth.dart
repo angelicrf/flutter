@@ -9,11 +9,10 @@ class AuthService{
   var password;
   List<String> existUser2 = new List();
 
-  AuthService(String userName, String password){
+  AuthService(String userName, String password, List<String> existUser2){
     this.userName = userName;
     this.password = password;
-   // getData();
-    //print(getData());
+    this.existUser2 = existUser2;
   }
   FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -29,7 +28,7 @@ class AuthService{
            })
         });
       this.existUser2 = existUser;
-     print("the value is $existUser");
+     //print("the value is $existUser");
       return existUser2;
     }
   Future registerUser(){
@@ -76,7 +75,7 @@ class AuthService{
   }
   Future signinAnon() async {
     try{
-
+      var dt = await getData();
        UserCredential userCredential = await FirebaseAuth.instance.signInAnonymously();
        print(userCredential);
        if(userCredential != null) {

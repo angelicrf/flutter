@@ -85,9 +85,9 @@ class _ChatScreenState extends State<ChatScreen> {
                 ListView.builder(
                     //shrinkWrap: true,
                     padding: EdgeInsets.only(top: 5.0, bottom: 30.0),
-                    itemCount: chats.length,
+                    itemCount: chatsList.length,
                     itemBuilder: (BuildContext context, int index){
-                      final Message message = chats[index];
+                      final Message message = chatsList[index];
                       getMessage = message.sender;
                       return new TextField(
                         textCapitalization: TextCapitalization.sentences,
@@ -106,7 +106,7 @@ class _ChatScreenState extends State<ChatScreen> {
             onPressed: () {
               setState(() =>
               {
-                chats.add(Message(
+                chatsList.add(Message(
                   sender: getMessage,
                   time: new DateTime.now().toString(),
                   text: _controller.text,
@@ -115,10 +115,11 @@ class _ChatScreenState extends State<ChatScreen> {
                 ))
               });
               var i;
-              for(i in chats){
+              for(i in chatsList) {
                 print(i.text);
               }
-             bool isMe = i.sender.id == currentUser.id;
+                bool isMe = i.sender.id == i.sender.id;
+
               _buildMessage(i, isMe);
             },
             iconSize: 30.0,
@@ -168,10 +169,10 @@ class _ChatScreenState extends State<ChatScreen> {
                         ),
                       child: ListView.builder(
                           padding: EdgeInsets.only(top: 15.0),
-                          itemCount: chats.length,
+                          itemCount: chatsList.length,
                           itemBuilder: (BuildContext context, int index){
-                            final Message message = chats[index];
-                            bool isMe = message.sender.id == currentUser.id;
+                            final Message message = chatsList[index];
+                            bool isMe = message.sender.id == message.sender.id;
                         return _buildMessage(message, isMe);
                       }),
                     ),
