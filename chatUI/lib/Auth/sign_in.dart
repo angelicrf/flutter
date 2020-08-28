@@ -28,7 +28,7 @@ class _SignInState extends State<SignIn> {
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
         child:
           PageView.builder(
-              itemCount: chatsList.length,
+              itemCount: 7,
               itemBuilder: (BuildContext context, int index){
             return  Scaffold(
               backgroundColor: Colors.greenAccent,
@@ -37,8 +37,6 @@ class _SignInState extends State<SignIn> {
                   RaisedButton(
                     child: Text("SignIn Anonymously"),
                     onPressed: () async{
-                      //Message showMs = new Message();
-
                       AuthService ath = AuthService(myController.toString(),myController_2.text.toString(),[]);
                       await ath.signinAnon();
                       //await ath.getData();

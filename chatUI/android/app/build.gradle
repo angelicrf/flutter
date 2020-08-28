@@ -21,9 +21,9 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
 
 android {
     compileSdkVersion 29
@@ -63,11 +63,24 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:multidex:1.0.3'
     //implementation 'com.android.application'
-    //implementation 'com.google.gms.google-services'
+    //implementation 'com.google.gms.google-services:play-services:10.0.1'
     implementation 'com.google.firebase:firebase-auth:19.3.2'
-    implementation 'com.google.firebase:firebase-firestore:21.5.0'
+    implementation 'com.google.firebase:firebase-firestore:21.6.0'
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation 'com.google.firebase:firebase-core:17.5.0'
+    implementation 'com.google.firebase:firebase-messaging:20.2.4'
 
-
+    //implementation 'com.google.gms.google-services'
 
 }
+project.ext {
+    set('FlutterFire', [
+            FirebaseSDKVersion: '21.6.0'
+    ])
+}
+apply plugin: 'com.google.gms.google-services'
+googleServices {
+    disableVersionCheck = true
+}
+
+//com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

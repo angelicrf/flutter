@@ -28,7 +28,7 @@ class AuthService{
            })
         });
       this.existUser2 = existUser;
-     //print("the value is $existUser");
+     // print("the value is $existUser");
       return existUser2;
     }
   Future registerUser(){

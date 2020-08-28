@@ -1,9 +1,13 @@
 import 'dart:core';
 import 'package:chatUI/Auth/auth.dart';
 import 'package:chatUI/user_model.dart';
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
 
 AuthService authServ = new AuthService("", "",[]);
 User currentUsr;
+Message message;
 List<User> favoriteList = new List();
 List<Message> chatsList = new List();
 
@@ -23,34 +27,41 @@ class Message {
     this.unread,
   });
 
-  getUserInfo() {
-    authServ.getData();
-    authServ.existUser2.forEach((element) {
-      print("the elements are $element");
+  getUserInfo() async{
+    await authServ.getData();
+    Random random = new Random();
+    favoriteList.clear();
+    chatsList.clear();
 
-      final User currentUser = User(
-        id: 0,
+    authServ.existUser2.forEach((element) {
+
+      //storeElement.add(element);
+      currentUsr = User(
+        id: random.nextInt(100),
         name: element,
         imageUrl: "assets/images/user1.jpg",
       );
-      currentUsr = currentUser;
-      List<User> favorite = [currentUser];
-      favoriteList = favorite;
-      List<Message> chats = [
-        Message(
-          sender: currentUser,
-          time: '4:30 PM',
-          text: "Hey how\'s your new job?",
-          isLiked: true,
-          unread: true,
-        )
-      ];
-      chatsList = chats;
+      favoriteList.add(currentUsr);
+      message =  Message(
+        sender: currentUsr,
+        time: '4:30 PM',
+        text: "Hey how\'s your new job?",
+        isLiked: true,
+        unread: true,
+      );
+      chatsList.add(message);
       return chatsList;
       //,sam, james, john, olivia, greg, sophia, steven;
     });
+
+
+    print(chatsList.length);
+    favoriteList.forEach((element) {print(element.id);});
+
   }
+
 }
+
 /*final User currentUser = User(
   id: 0,
   name: "Anna",
