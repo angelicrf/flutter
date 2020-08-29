@@ -30,16 +30,16 @@ class Message {
   getUserInfo() async{
     await authServ.getData();
     Random random = new Random();
+    var file = authServ.file;
     favoriteList.clear();
     chatsList.clear();
 
     authServ.existUser2.forEach((element) {
-
       //storeElement.add(element);
       currentUsr = User(
         id: random.nextInt(100),
         name: element,
-        imageUrl: "assets/images/user1.jpg",
+        imageUrl: file.toString(),
       );
       favoriteList.add(currentUsr);
       message =  Message(
@@ -53,7 +53,6 @@ class Message {
       return chatsList;
       //,sam, james, john, olivia, greg, sophia, steven;
     });
-
 
     print(chatsList.length);
     favoriteList.forEach((element) {print(element.id);});

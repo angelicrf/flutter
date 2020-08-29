@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.red,
           accentColor: Colors.black26,
         ),
-        home: SignIn(),
+        home: SignIn(null),
       );
     /*}
       // Otherwise, show something whilst waiting for initialization to complete
