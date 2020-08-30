@@ -1,11 +1,12 @@
 import 'dart:core';
+import 'dart:io';
 import 'package:chatUI/Auth/auth.dart';
 import 'package:chatUI/user_model.dart';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 
-AuthService authServ = new AuthService("", "",[]);
+AuthService authServ = new AuthService();
 User currentUsr;
 Message message;
 List<User> favoriteList = new List();
@@ -30,7 +31,7 @@ class Message {
   getUserInfo() async{
     await authServ.getData();
     Random random = new Random();
-    var file = authServ.file;
+    File file = authServ.imageValue;
     favoriteList.clear();
     chatsList.clear();
 
@@ -39,7 +40,7 @@ class Message {
       currentUsr = User(
         id: random.nextInt(100),
         name: element,
-        imageUrl: file.toString(),
+        imageUrl: file,
       );
       favoriteList.add(currentUsr);
       message =  Message(

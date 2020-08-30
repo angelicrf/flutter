@@ -1,8 +1,12 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
+
 class User {
 
   final int id;
   final String name;
-  final String imageUrl;
+  final File imageUrl;
 
   User({
     this.id,

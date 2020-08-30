@@ -48,9 +48,15 @@ class FavoriteContacts extends StatelessWidget {
                             padding: const EdgeInsets.all(10.0),
                             child: Column(
                               children: <Widget>[
-                                CircleAvatar(
-                                  radius: 25.0,
-                                  backgroundImage: AssetImage(favoriteList[index].imageUrl),
+                                Align(
+                                  child: ClipOval(
+                                    child: SizedBox(
+                                      width: 60.0,
+                                      height: 60.0,
+                                      child:
+                                      Image.file(favoriteList[index].imageUrl,fit: BoxFit.fill,)
+                                    ),
+                                  ),
                                 ),
                                 SizedBox(height: 6.0),
                                 Text(favoriteList[index].name,

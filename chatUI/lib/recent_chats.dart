@@ -33,7 +33,17 @@ class RecentChats extends StatelessWidget {
                       children: [
                         Row(
                           children: <Widget>[
-                            CircleAvatar(radius: 25.0, backgroundImage: AssetImage(chat.sender.imageUrl),),
+                            //CircleAvatar(radius: 25.0, backgroundImage: AssetImage(chat.sender.imageUrl),),
+                            Align(
+                              child: ClipOval(
+                                child: SizedBox(
+                                    width: 60.0,
+                                    height: 60.0,
+                                    child:
+                                    Image.file(chat.sender.imageUrl,fit: BoxFit.fill,)
+                                ),
+                              ),
+                            ),
                             SizedBox(width: 10.0,),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,

@@ -8,16 +8,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 class AuthService{
+
   var userName;
   var password;
   List<String> existUser2 = new List();
   File file;
+  var imageValue;
 
-  AuthService(String userName, String password, List<String> existUser2){
-    this.userName = userName;
-    this.password = password;
-    this.existUser2 = existUser2;
-  }
+  AuthService({String userName, String password, List<String> existUser2, this.imageValue});
 
   FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -88,10 +86,6 @@ class AuthService{
   }
   Future signinAnon() async {
     try{
-      SignIn signin = new SignIn(null);
-      var getSigned = signin.file_2;
-      this.file = getSigned;
-      print("getting from auth is $getSigned");
       var dt = await getData();
        UserCredential userCredential = await FirebaseAuth.instance.signInAnonymously();
        print(userCredential);
