@@ -5,6 +5,7 @@ import 'package:chatUI/user_model.dart';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:path_provider/path_provider.dart';
 
 AuthService authServ = new AuthService();
 User currentUsr;
@@ -19,6 +20,7 @@ class Message {
   final String text;
   final bool isLiked;
   final bool unread;
+  var storeImage;
 
   Message({
     this.isLiked,
@@ -26,21 +28,25 @@ class Message {
     this.text,
     this.time,
     this.unread,
+    this.storeImage
   });
 
   getUserInfo() async{
     await authServ.getData();
+    // next stage map through apiImage
+    var apiImage = authServ.showImage2[4];
+    var saveFile = apiImage.substring(8, apiImage.length -2);
+    final File imagegt = File(saveFile);
     Random random = new Random();
-    File file = authServ.imageValue;
+    //File file = authServ.imageValue;
     favoriteList.clear();
     chatsList.clear();
 
     authServ.existUser2.forEach((element) {
-      //storeElement.add(element);
       currentUsr = User(
         id: random.nextInt(100),
         name: element,
-        imageUrl: file,
+        imageUrl: imagegt,
       );
       favoriteList.add(currentUsr);
       message =  Message(
@@ -52,7 +58,6 @@ class Message {
       );
       chatsList.add(message);
       return chatsList;
-      //,sam, james, john, olivia, greg, sophia, steven;
     });
 
     print(chatsList.length);

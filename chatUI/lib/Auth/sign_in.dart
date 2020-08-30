@@ -24,6 +24,8 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
 AuthService authService = new AuthService();
+Message message = new Message();
+
   @override
   Widget build(BuildContext context) {
     final myController = TextEditingController();
@@ -38,8 +40,10 @@ AuthService authService = new AuthService();
         base64Encode(widget.file.readAsBytesSync());
         widget.file = File(widget.pickedFile.path);
         authServ.imageValue = widget.file;
+        message.storeImage = widget.file;
         //print(base64Encode(file.readAsBytesSync()));
         print("Image is uploaded");
+        print(message.storeImage);
       });
       return authService.imageValue;
     };
@@ -119,7 +123,7 @@ AuthService authService = new AuthService();
                   AuthService ath = AuthService();
                      ath.userName = myController.text.toString();
                      ath.password = myController_2.text.toString();
-                  await ath.sgininEmail();
+                  await ath.sgininEmail(message.storeImage);
                   Navigator.push(context, MaterialPageRoute(builder: (_) =>
                   HomeScreen()));
                   },

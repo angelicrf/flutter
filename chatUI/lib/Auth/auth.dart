@@ -1,48 +1,56 @@
 //import 'dart:html';
 
+import 'dart:convert';
 import 'dart:io';
-
 import 'package:chatUI/Auth/sign_in.dart';
+import 'package:chatUI/message_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 
 class AuthService{
 
   var userName;
   var password;
   List<String> existUser2 = new List();
-  File file;
+  List<String> showImage2 = new List();
   var imageValue;
 
   AuthService({String userName, String password, List<String> existUser2, this.imageValue});
+  Message message = new Message();
 
   FirebaseAuth auth = FirebaseAuth.instance;
 
    Future<List<String>> getData()async{
      List<String> existUser = new List();
-     var showImage = "";
+     List<String> showImage = new List();
       await FirebaseFirestore.instance
         .collection('users')
         .get()
         .then((QuerySnapshot querySnapshot) => {
           querySnapshot.docs.forEach((doc) {
-
-            showImage = doc.data()["image"];
-            existUser.add(doc.data()["name"]);
-            return existUser;
+              this.showImage2.add(jsonEncode(doc.data()["image"]));
+              this.existUser2.add(jsonEncode(doc.data()["name"]));
+              if(this.showImage2.length > 0){
+                return showImage2;
+              }
+              if(this.existUser2.length > 0 ){
+                return existUser2;
+              }
            })
         });
-      this.existUser2 = existUser;
-      this.file = showImage as File;
-       //print("Show Image is $showImage");
-      return existUser2;
+     /*if(this.showImage2.length > 0){
+       return showImage2;
+     }
+     if(this.existUser2.length > 0 ){
+       print("existing users are");
+       return existUser2;
+     }*/
+     return this.showImage2;
     }
-  Future registerUser(){
+  Future registerUser(var registerImage){
     try{
-     // var getSigned = signin.file_2;
-     // this.file = getSigned;
-     // print("getting from auth $file");
       FirebaseFirestore.instance.collection('users').add(
           {
             "name" : this.userName,
@@ -51,7 +59,7 @@ class AuthService{
               "street" : "default",
               "city" : "default"
             },
-            "image" : this.file
+            "image" : registerImage.toString()
           }).then((value){
        return value;
       });
@@ -60,7 +68,7 @@ class AuthService{
       print(e.toString());
     }
   }
-  Future sgininEmail() async{
+  Future sgininEmail(var holdImage) async{
      var dt = await getData();
    if(existUser2.contains("anna.holmes@gmail.com")) {
      try {
@@ -82,7 +90,7 @@ class AuthService{
       }
       else return print(e.toString());
     }} else
-      return registerUser();
+      return registerUser(holdImage);
   }
   Future signinAnon() async {
     try{
