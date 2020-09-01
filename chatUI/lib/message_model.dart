@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:core';
 import 'dart:io';
 import 'package:chatUI/Auth/auth.dart';
@@ -33,23 +34,22 @@ class Message {
 
   getUserInfo() async{
     await authServ.getData();
-    // next stage map through apiImage
-    var apiImage = authServ.showImage2[4];
-    var saveFile = apiImage.substring(8, apiImage.length -2);
-    final File imagegt = File(saveFile);
     Random random = new Random();
-    //File file = authServ.imageValue;
-    favoriteList.clear();
-    chatsList.clear();
-
+    //print(authServ.testValue3);
     authServ.existUser2.forEach((element) {
+    for(int i = 0; i < authServ.testValue3.length; i++) {
+      final File alternativeImg =
+      File(
+          "/data/user/0/com.example.chatUI/cache/image_picker8022641881933704740.jpg");
+
       currentUsr = User(
-        id: random.nextInt(100),
-        name: element,
-        imageUrl: imagegt,
+          id: random.nextInt(100),
+          name: element,
+          imageUrl: alternativeImg
+        //(authServ.testValue3["a"][i]!= null) ? trimed : alternativeImg,
       );
       favoriteList.add(currentUsr);
-      message =  Message(
+      message = Message(
         sender: currentUsr,
         time: '4:30 PM',
         text: "Hey how\'s your new job?",
@@ -58,13 +58,17 @@ class Message {
       );
       chatsList.add(message);
       return chatsList;
+      print(authServ.testValue3["a"][i]);
+    }
     });
 
-    print(chatsList.length);
-    favoriteList.forEach((element) {print(element.id);});
+     // favoriteList.clear();
+     // chatsList.clear();
+
+    //authServ.showImage2.clear();
+    //authServ.existUser2.clear();
 
   }
-
 }
 
 /*final User currentUser = User(

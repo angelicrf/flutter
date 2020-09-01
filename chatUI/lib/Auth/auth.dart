@@ -1,5 +1,3 @@
-//import 'dart:html';
-
 import 'dart:convert';
 import 'dart:io';
 import 'package:chatUI/Auth/sign_in.dart';
@@ -13,25 +11,37 @@ class AuthService{
 
   var userName;
   var password;
-  List<String> existUser2 = new List();
+  var existUser2 = [];
   List<String> showImage2 = new List();
   var imageValue;
+  Map testValue3 = new Map();
 
-  AuthService({String userName, String password, List<String> existUser2, this.imageValue});
+  AuthService({String userName, String password,
+    List<String> existUser2, this.imageValue, this.testValue3});
   Message message = new Message();
 
   FirebaseAuth auth = FirebaseAuth.instance;
 
-   Future<List<String>> getData()async{
-     List<String> existUser = new List();
-     List<String> showImage = new List();
+   Future getData()async{
+     showImage2.clear();
+     existUser2.clear();
+      //testValue3.clear();
+
       await FirebaseFirestore.instance
         .collection('users')
         .get()
         .then((QuerySnapshot querySnapshot) => {
+          /*for (int i = 0; i < querySnapshot.docs.length; i++) {
+             this.testValue = querySnapshot.docs[i].data(),
+
+          }*/
           querySnapshot.docs.forEach((doc) {
-              this.showImage2.add(jsonEncode(doc.data()["image"]));
+             this.showImage2.add(jsonEncode(doc.data()["image"]));
               this.existUser2.add(jsonEncode(doc.data()["name"]));
+             this.testValue3 =
+                 {"a": this.showImage2.toList(),
+                  "b": this.existUser2.toList()
+                 };
               if(this.showImage2.length > 0){
                 return showImage2;
               }
@@ -40,14 +50,9 @@ class AuthService{
               }
            })
         });
-     /*if(this.showImage2.length > 0){
-       return showImage2;
-     }
-     if(this.existUser2.length > 0 ){
-       print("existing users are");
-       return existUser2;
-     }*/
-     return this.showImage2;
+      print("testvalue check");
+     print(this.testValue3);
+     return this.testValue3;
     }
   Future registerUser(var registerImage){
     try{
