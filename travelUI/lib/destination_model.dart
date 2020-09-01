@@ -7,6 +7,7 @@ class Destination{
   String country;
   String description;
   List<Activity> activities;
+  List<Destination> destinations;
 
   Destination({
     this.imageUrl,
@@ -14,9 +15,10 @@ class Destination{
     this.country,
     this.description,
     this.activities,
+    this.destinations,
 });
 }
-final List<Destination> destinations = [
+List<Destination> destinations = [
   Destination(
     imageUrl: "assets/images/image_1.jpg",
     city: "Paris",
