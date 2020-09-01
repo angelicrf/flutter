@@ -50,8 +50,6 @@ class AuthService{
               }
            })
         });
-      print("testvalue check");
-     print(this.testValue3);
      return this.testValue3;
     }
   Future registerUser(var registerImage){
