@@ -21,9 +21,9 @@ class Destination{
 List<Destination> destinations = [
   Destination(
     imageUrl: "assets/images/image_1.jpg",
-    city: "Paris",
-    country: "France",
-    description: "visit Paris For an amazing tour",
+    city: "Egina",
+    country: "Greece",
+    description: "visit Egina For an amazing tour",
     activities: activities,
   ),
   Destination(
@@ -42,9 +42,9 @@ List<Destination> destinations = [
   ),
   Destination(
     imageUrl: "assets/images/image_4.jpg",
-    city: "Quanary Islands",
-    country: "Spain",
-    description: "visit Quanary Islands For an amazing tour",
+    city: "Paris",
+    country: "France",
+    description: "visit la tour Eiffel For an amazing tour",
     activities: activities,
   ),
   Destination(
