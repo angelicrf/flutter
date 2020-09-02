@@ -4,15 +4,17 @@ class Hotel{
   String name;
   String address;
   int price;
+  List<Hotel> hotels;
 
   Hotel({
     this.imageUrl,
     this.name,
     this.address,
     this.price,
+    this.hotels,
 });
 }
-final List<Hotel> hotels = [
+List<Hotel> hotels = [
   Hotel(
     imageUrl: "assets/images/hotel_1.jpg",
     name: "Hotel 1",
@@ -23,24 +25,24 @@ final List<Hotel> hotels = [
     imageUrl: "assets/images/hotel_2.jpg",
     name: "Hotel 2",
     address: "37 Ave NE",
-    price: 190,
+    price: 210,
   ),
   Hotel(
     imageUrl: "assets/images/hotel_3.jpg",
     name: "Hotel 3",
     address: "39 Ave NE",
-    price: 190,
+    price: 90,
   ),
   Hotel(
     imageUrl: "assets/images/hotel_4.jpg",
     name: "Hotel 4",
     address: "40 Ave NE",
-    price: 190,
+    price: 320,
   ),
   Hotel(
     imageUrl: "assets/images/hotel_5.jpg",
     name: "Hotel 5",
     address: "42 Ave NE",
-    price: 190,
+    price: 480,
   ),
 ];
