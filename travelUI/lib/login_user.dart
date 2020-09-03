@@ -36,7 +36,7 @@ class _LoginUser extends State<LoginUser> {
                   color: Colors.white,
                 ),),
             onPressed: () async{
-                await _signIn.signinAnon();
+                await _signIn.receiveImages();
             Navigator.push(context, MaterialPageRoute(builder: (_) =>
                 HomeScreen()));
           }
