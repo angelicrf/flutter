@@ -44,7 +44,7 @@ SignIn signIn = new SignIn();
           height: 300.0,
           color: Colors.blueGrey,
           child: FutureBuilder(
-            future: signIn.receiveImages(),
+            future: signIn.receiveImages("destinations"),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
                 return ListView.builder(

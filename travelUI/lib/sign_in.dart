@@ -7,10 +7,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 class SignIn {
-  List<String> listOfStr = List();
+  List<String> listOfHotelImages;
   List<String> listOfImage;
 
-  SignIn({this.listOfImage});
+  SignIn({this.listOfImage, this.listOfHotelImages});
 
   var storage = FirebaseStorage.instance;
   var firebaseFirestore = FirebaseFirestore.instance;
@@ -32,19 +32,30 @@ class SignIn {
 
    getImages() {
     this.listOfImage =  List();
+    this.listOfHotelImages =  List();
     var holdImages = ["image_1", "image_2","image_3",
                       "image_4","image_5"];
 
+    var holdHotelsImages = ["hotel_1","hotel_2","hotel_3",
+                            "hotel_4","hotel_5"];
+    var defaultImage = "avatar.png";
+
     for (int i = 0; i < holdImages.length; i++) {
       listOfImage.add(holdImages[i]);
+      listOfHotelImages.add(holdHotelsImages[i]);
     }
-    return listOfImage;
+    if(listOfImage.length > 0){
+      return listOfImage;
+    }
+    if(listOfHotelImages.length > 0){
+      return listOfHotelImages;
+    }
+    else return defaultImage;
   }
 
-  void saveStorage() {
+  void saveStorage(List<String> listEnter, String collectionName) {
 
-    this.getImages();
-    this.listOfImage.forEach((img) async {
+    listEnter.forEach((img) async {
      final Directory systemTempDir = Directory.systemTemp;
       final byteData = await rootBundle.load('assets/images/'+ img + ".jpg");
       print(byteData);
@@ -62,13 +73,18 @@ class SignIn {
         final String downloadUrl =
         await snapshot.ref.getDownloadURL();
         await firebaseFirestore
-            .collection("destinations")
+            .collection(collectionName)
             .add({"url": downloadUrl, "name": img});
       }
     });
   }
-  Future<QuerySnapshot> receiveImages() {
-    return firebaseFirestore.collection("destinations").get();
+  createCollection(){
+    getImages();
+    return saveStorage(this.listOfHotelImages, "hotels");
+  }
+
+  Future<QuerySnapshot> receiveImages(String collectionName) {
+    return firebaseFirestore.collection(collectionName).get();
   }
 
 }
