@@ -1,5 +1,4 @@
 class Activity {
-
   String imageUrl;
   String name;
   String type;
@@ -16,12 +15,13 @@ class Activity {
     this.type,
   });
 }
+
 List<Activity> activities = [
   Activity(
     imageUrl: "assets/images/image_1.jpg",
     name: "Egina",
     type: "Fishing",
-    startTimes: ["11:30am","13:40pm"],
+    startTimes: ["11:30am", "13:40pm"],
     rating: 5,
     price: 30,
   ),
@@ -29,7 +29,7 @@ List<Activity> activities = [
     imageUrl: "assets/images/image_2.jpg",
     name: "Mexican Resorts",
     type: "Diving",
-    startTimes: ["14:30pm","16:40pm"],
+    startTimes: ["14:30pm", "16:40pm"],
     rating: 5,
     price: 30,
   ),
@@ -37,7 +37,7 @@ List<Activity> activities = [
     imageUrl: "assets/images/image_3.jpg",
     name: "Italy",
     type: "Boating",
-    startTimes: ["17:30pm","19:40pm"],
+    startTimes: ["17:30pm", "19:40pm"],
     rating: 5,
     price: 30,
   ),
@@ -45,7 +45,7 @@ List<Activity> activities = [
     imageUrl: "assets/images/image_4.jpg",
     name: "Paris",
     type: "La tour Eiffel",
-    startTimes: ["10:30am","12:40pm"],
+    startTimes: ["10:30am", "12:40pm"],
     rating: 5,
     price: 30,
   ),
@@ -53,7 +53,7 @@ List<Activity> activities = [
     imageUrl: "assets/images/image_5.jpg",
     name: "Bahama",
     type: "Swimming",
-    startTimes: ["13:30pm","16:40pm"],
+    startTimes: ["13:30pm", "16:40pm"],
     rating: 5,
     price: 30,
   )

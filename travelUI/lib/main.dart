@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:travelUI/login_user.dart';
 import 'home_screen.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
@@ -25,5 +25,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-

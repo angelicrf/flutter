@@ -1,7 +1,6 @@
-
 import 'activity_model.dart';
 
-class Destination{
+class Destination {
   String imageUrl;
   String city;
   String country;
@@ -16,8 +15,9 @@ class Destination{
     this.description,
     this.activities,
     this.destinations,
-});
+  });
 }
+
 List<Destination> destinations = [
   Destination(
     imageUrl: "assets/images/image_1.jpg",

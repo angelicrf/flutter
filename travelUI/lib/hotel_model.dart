@@ -1,5 +1,4 @@
-
-class Hotel{
+class Hotel {
   String imageUrl;
   String name;
   String address;
@@ -12,8 +11,9 @@ class Hotel{
     this.address,
     this.price,
     this.hotels,
-});
+  });
 }
+
 List<Hotel> hotels = [
   Hotel(
     imageUrl: "assets/images/hotel_1.jpg",
