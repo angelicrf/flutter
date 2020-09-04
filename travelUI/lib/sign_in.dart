@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:travelUI/activity_model.dart';
 
 class SignIn {
   List<String> listOfHotelImages;
@@ -53,6 +54,25 @@ class SignIn {
       return listOfHotelImages;
     } else
       return defaultImage;
+  }
+
+  createCollectionList() {
+    Activity activities = new Activity();
+
+    try {
+      FirebaseFirestore.instance.collection('activities').add({
+        "imageUrl": "",
+        "name": "Bahama",
+        "type": "Swimming",
+        "startTimes": ["12:30pm", "4:20pm"],
+        "rating": 3,
+        "price": 340,
+      }).then((value) {
+        return value;
+      });
+    } on FirebaseFirestore catch (e) {
+      print(e.toString());
+    }
   }
 
   void saveStorage(List<String> listEnter, String collectionName) {

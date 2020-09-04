@@ -3,6 +3,7 @@ class Activity {
   String name;
   String type;
   List<String> startTimes;
+  List<Activity> activities;
   int rating;
   int price;
 
@@ -13,6 +14,7 @@ class Activity {
     this.rating,
     this.startTimes,
     this.type,
+    this.activities,
   });
 }
 

@@ -41,6 +41,7 @@ class _LoginUser extends State<LoginUser> {
                 onPressed: () async {
                   await _signIn.receiveImages("destinations");
                   await _signIn.receiveImages("hotels");
+                  //_signIn.createCollectionList();
                   //_signIn.createCollection();
                   Navigator.push(
                       context, MaterialPageRoute(builder: (_) => HomeScreen()));
