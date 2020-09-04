@@ -9,6 +9,7 @@ import 'package:travelUI/sign_in.dart';
 import 'destination_model.dart';
 
 class DestinationCarousel extends StatelessWidget {
+  var holdPlace;
   SignIn signIn = new SignIn();
   @override
   Widget build(BuildContext context) {
@@ -55,15 +56,19 @@ class DestinationCarousel extends StatelessWidget {
                   if (snapshot.connectionState == ConnectionState.done) {
                     return ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: destinations.length,
+                        itemCount: snapshot.data.docs.length,
                         itemBuilder: (BuildContext context, int index) {
-                          Destination destination = destinations[index];
                           return GestureDetector(
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (_) => DestinationScreen(
-                                        destination: destination,
+                                        place: snapshot.data.docs[index]
+                                            .data()["url"],
+                                        city: snapshot.data.docs[index]
+                                            .data()["city"],
+                                        country: snapshot.data.docs[index]
+                                            .data()["country"],
                                       )),
                             ),
                             child: Container(
@@ -92,7 +97,7 @@ class DestinationCarousel extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "${destination.activities.length} activities",
+                                              "${snapshot.data.docs.length} activities",
                                               style: TextStyle(
                                                 fontSize: 17.0,
                                                 fontWeight: FontWeight.w600,
@@ -100,7 +105,7 @@ class DestinationCarousel extends StatelessWidget {
                                               ),
                                             ),
                                             Text(
-                                              "${destination.description}",
+                                              "${snapshot.data.docs[index].data()["description"]}",
                                               style: TextStyle(
                                                 color: Colors.grey,
                                               ),
@@ -127,7 +132,8 @@ class DestinationCarousel extends StatelessWidget {
                                     child: Stack(
                                       children: [
                                         Hero(
-                                          tag: destination.imageUrl,
+                                          tag: snapshot.data.docs[index]
+                                              .data()["url"],
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(20.0),
@@ -149,7 +155,8 @@ class DestinationCarousel extends StatelessWidget {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                destination.city,
+                                                snapshot.data.docs[index]
+                                                    .data()["city"],
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: 22.0,
@@ -169,7 +176,8 @@ class DestinationCarousel extends StatelessWidget {
                                                     height: 20.0,
                                                   ),
                                                   Text(
-                                                    destination.country,
+                                                    snapshot.data.docs[index]
+                                                        .data()["country"],
                                                     style: TextStyle(
                                                       color: Colors.white,
                                                     ),

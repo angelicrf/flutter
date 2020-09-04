@@ -2,21 +2,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:travelUI/destination_model.dart';
 import 'package:travelUI/sign_in.dart';
 
-import 'activity_model.dart';
-
 class DestinationScreen extends StatefulWidget {
-  final Destination destination;
-  DestinationScreen({this.destination});
+  var place = "";
+  var city = "";
+  var country = "";
 
+  DestinationScreen({this.place, this.city, this.country});
   @override
   _DestinationScreenState createState() => _DestinationScreenState();
 }
 
 class _DestinationScreenState extends State<DestinationScreen> {
   SignIn _signIn = new SignIn();
+
   Text _buildRatingStars(int rating) {
     String stars = "";
     for (int i = 0; i < rating; i++) {
@@ -44,11 +44,11 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   ],
                 ),
                 child: Hero(
-                  tag: widget.destination.imageUrl,
+                  tag: widget.place,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20.0),
                     child: Image(
-                      image: AssetImage(widget.destination.imageUrl),
+                      image: NetworkImage(widget.place),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -98,7 +98,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.destination.city,
+                      widget.city,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 22.0,
@@ -117,7 +117,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                           height: 20.0,
                         ),
                         Text(
-                          widget.destination.country,
+                          widget.country,
                           style: TextStyle(
                             color: Colors.white,
                           ),
@@ -147,8 +147,6 @@ class _DestinationScreenState extends State<DestinationScreen> {
                         padding: EdgeInsets.only(top: 10.0, bottom: 17.0),
                         itemCount: snapshot.data.docs.length,
                         itemBuilder: (BuildContext context, int index) {
-                          Activity activity =
-                              widget.destination.activities[index];
                           return Stack(
                             children: [
                               Container(

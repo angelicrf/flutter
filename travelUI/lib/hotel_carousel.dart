@@ -1,11 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travelUI/sign_in.dart';
-
-import 'destination_model.dart';
-import 'hotel_model.dart';
 
 class HotelCarousel extends StatelessWidget {
   SignIn signIn = new SignIn();
@@ -54,9 +50,8 @@ class HotelCarousel extends StatelessWidget {
                 if (snapshot.connectionState == ConnectionState.done) {
                   return ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: destinations.length,
+                      itemCount: snapshot.data.docs.length,
                       itemBuilder: (BuildContext context, int index) {
-                        Hotel hotel = hotels[index];
                         return Container(
                           margin: EdgeInsets.all(10.0),
                           width: 250.0,
@@ -80,7 +75,7 @@ class HotelCarousel extends StatelessWidget {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Text(
-                                          "${hotel.name} hotels",
+                                          "${snapshot.data.docs[index].data()["hotelName"]} hotel",
                                           style: TextStyle(
                                             fontSize: 17.0,
                                             fontWeight: FontWeight.w600,
@@ -89,14 +84,14 @@ class HotelCarousel extends StatelessWidget {
                                         ),
                                         SizedBox(height: 2.0),
                                         Text(
-                                          "${hotel.address}",
+                                          "${snapshot.data.docs[index].data()["address"]}",
                                           style: TextStyle(
                                             color: Colors.grey,
                                           ),
                                         ),
                                         SizedBox(height: 2.0),
                                         Text(
-                                          "\$${hotel.price} per night",
+                                          "\$${snapshot.data.docs[index].data()["price"]} per night",
                                           style: TextStyle(
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.bold,
