@@ -29,7 +29,7 @@ class Rooms extends StatelessWidget {
               );
             }
             return Padding(
-              padding: EdgeInsets.only(top: 10.0),
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
               child: ProfileAvatar(imageUrl: _user.imageUrl, isActive: true),
             );
           }),

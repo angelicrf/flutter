@@ -3,78 +3,90 @@ import 'package:faceBookUI/models/story_model.dart';
 import 'package:faceBookUI/models/user_model.dart';
 
 final currentUser = User(
-    name: "Angelique", imageUrl: 'https://www.gstatic.com/webp/gallery/2.webp');
+    name: "Angelique",
+    imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/cat.png');
 final List<User> onLineUsers = [
   User(
       name: "david Brooks",
-      imageUrl: 'https://www.gstatic.com/webp/gallery/2.webp'),
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/boat.png'),
   User(
       name: "Sarah Mckenzie",
-      imageUrl: 'https://www.gstatic.com/webp/gallery/2.webp'),
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/girl.png'),
   User(
-      name: "Joe Doe", imageUrl: 'https://www.gstatic.com/webp/gallery/2.webp'),
+      name: "Joe Doe",
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/fruits.png'),
   User(
       name: "Matthiew Hinki",
-      imageUrl: 'https://www.gstatic.com/webp/gallery/2.webp'),
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/monarch.png'),
   User(
       name: "Amy Smith",
-      imageUrl: 'https://www.gstatic.com/webp/gallery/2.webp'),
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/pool.png'),
   User(
       name: "Milena Callahan",
-      imageUrl: 'https://www.gstatic.com/webp/gallery/2.webp'),
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/peppers.png'),
   User(
       name: "Kayley Summers",
-      imageUrl: 'https://www.gstatic.com/webp/gallery/2.webp'),
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/mountain.png'),
   User(
       name: "Bonita Halliday",
-      imageUrl: 'https://www.gstatic.com/webp/gallery/2.webp'),
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/tulips.png'),
   User(
       name: "Brandon Jacobson",
-      imageUrl: 'https://www.gstatic.com/webp/gallery/2.webp'),
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/watch.png'),
   User(
       name: "Elowen Banks",
-      imageUrl: 'https://www.gstatic.com/webp/gallery/2.webp'),
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/serrano.png'),
 ];
-final List<Story> story = [
+final List<Story> stories = [
   Story(
       user: onLineUsers[0],
-      imageUrl: 'https://unsplash.com/photos/bUQ26ASYx78',
+      imageUrl:
+          'https://i.postimg.cc/8kRhKtD7/tony-pham-MApm-Up-GIk-Wc-unsplash.jpg',
       isViewed: true),
   Story(
       user: onLineUsers[1],
-      imageUrl: 'https://unsplash.com/photos/dzKBQquyLBw',
+      imageUrl:
+          'https://i.postimg.cc/W3XJVf48/klara-kulikova-I3-Ri-FLMw-QQA-unsplash.jpg',
       isViewed: false),
   Story(
       user: onLineUsers[2],
-      imageUrl: 'https://unsplash.com/photos/wE_TxxSrGBQ',
+      imageUrl:
+          'https://i.postimg.cc/VkVMrh9V/kevin-turcios-1ynqyhz-JNNI-unsplash.jpg',
       isViewed: true),
   Story(
       user: onLineUsers[3],
-      imageUrl: 'https://unsplash.com/photos/mwyhFb2WO-4',
+      imageUrl:
+          'https://i.postimg.cc/JnbBF4ff/karsten-winegeart-sksq-Vaf-EYFo-unsplash.jpg',
       isViewed: true),
   Story(
       user: onLineUsers[4],
-      imageUrl: 'https://unsplash.com/photos/Nrxo3lzhQHI',
+      imageUrl:
+          'https://i.postimg.cc/66fvLqLR/gabriel-mccallin-fgm-Ff-Ld-Rcx-A-unsplash.jpg',
       isViewed: false),
   Story(
       user: onLineUsers[5],
-      imageUrl: 'https://unsplash.com/photos/KLmSWe_pODM',
+      imageUrl:
+          'https://i.postimg.cc/cLrtSmqM/billow926-w-ZQ4-Lc-Clsa4-unsplash.jpg',
       isViewed: true),
   Story(
       user: onLineUsers[6],
-      imageUrl: 'https://unsplash.com/photos/M_NbX5Afcys',
+      imageUrl:
+          'https://i.postimg.cc/kM2x9qxt/karsten-winegeart-Jc-UCKGh-Il-U-unsplash.jpg',
       isViewed: false),
   Story(
       user: onLineUsers[7],
-      imageUrl: 'https://unsplash.com/photos/6Unon01hKwI',
+      imageUrl:
+          'https://i.postimg.cc/XqsXMZQz/jasmin-chew-j1x8-HR5-Gs-F4-unsplash.jpg',
       isViewed: true),
   Story(
       user: onLineUsers[8],
-      imageUrl: 'https://unsplash.com/photos/akIfbljbISI',
+      imageUrl:
+          'https://i.postimg.cc/63wQyVPP/luke-thornton-JNl7o-Mj2cc-unsplash.jpg',
       isViewed: true),
   Story(
       user: onLineUsers[9],
-      imageUrl: 'https://unsplash.com/photos/INVFC49BbmY',
+      imageUrl:
+          'https://i.postimg.cc/zX3Tz5Kg/anasta-olson-Sj-N0li2z-QJA-unsplash-1.jpg',
       isViewed: true),
 ];
 final List<Post> posts = [

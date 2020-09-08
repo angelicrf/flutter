@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:faceBookUI/models/user_model.dart';
+import 'package:faceBookUI/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:faceBookUI/data/data.dart';
@@ -19,11 +20,7 @@ class CreatePostContainer extends StatelessWidget {
         children: [
           Row(
             children: [
-              CircleAvatar(
-                backgroundColor: Colors.grey[200],
-                backgroundImage:
-                    CachedNetworkImageProvider(this.currentUser.imageUrl),
-              ),
+              ProfileAvatar(imageUrl: this.currentUser.imageUrl),
               SizedBox(width: 10.0),
               Expanded(
                 child: TextField(
