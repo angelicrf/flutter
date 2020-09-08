@@ -47,11 +47,12 @@ class _CreateRoomButton extends StatelessWidget {
       textColor: Colors.white,
       borderSide: BorderSide(width: 4.0, color: Colors.blueAccent),
       child: Row(children: [
-        ShaderMask(
+        /* ShaderMask(
           shaderCallback: (rect) =>
               Palette.createRoomGradient.createShader(rect),
           child: Icon(Icons.video_call, size: 30.0, color: Colors.white),
-        ),
+        ),*/
+        Icon(Icons.video_call, size: 30.0, color: Colors.purpleAccent),
         SizedBox(
           width: 2.0,
         ),

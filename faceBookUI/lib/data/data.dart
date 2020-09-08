@@ -8,13 +8,15 @@ final currentUser = User(
 final List<User> onLineUsers = [
   User(
       name: "david Brooks",
-      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/boat.png'),
+      imageUrl:
+          'https://i.postimg.cc/BnhVb79X/mauricio-guardiano-Pt-Bv-NHq320k-unsplash.jpg'),
   User(
       name: "Sarah Mckenzie",
       imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/girl.png'),
   User(
       name: "Joe Doe",
-      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/fruits.png'),
+      imageUrl:
+          'https://i.postimg.cc/sfc93QR2/roy-zeigerman-Ymu-OFJ7oa3-E-unsplash.jpg'),
   User(
       name: "Matthiew Hinki",
       imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/monarch.png'),
@@ -23,7 +25,8 @@ final List<User> onLineUsers = [
       imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/pool.png'),
   User(
       name: "Milena Callahan",
-      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/peppers.png'),
+      imageUrl:
+          'https://i.postimg.cc/4dw7Rchk/mika-baumeister-Afk-KYr-NXUgk-unsplash.jpg'),
   User(
       name: "Kayley Summers",
       imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/mountain.png'),
@@ -35,7 +38,8 @@ final List<User> onLineUsers = [
       imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/watch.png'),
   User(
       name: "Elowen Banks",
-      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/serrano.png'),
+      imageUrl:
+          'https://i.postimg.cc/wvdvjy4v/xps-B5r-NNk-Gt-RXI-unsplash.jpg'),
 ];
 final List<Story> stories = [
   Story(
@@ -94,7 +98,8 @@ final List<Post> posts = [
       user: onLineUsers[0],
       caption: "ckeckout these cool 0",
       timeApp: "64m",
-      imageUrl: 'https://unsplash.com/photos/bUQ26ASYx78',
+      imageUrl:
+          'https://i.postimg.cc/BnhVb79X/mauricio-guardiano-Pt-Bv-NHq320k-unsplash.jpg',
       likes: 1546,
       comments: 172,
       shares: 72),
@@ -102,7 +107,7 @@ final List<Post> posts = [
       user: onLineUsers[1],
       caption: "ckeckout these cool 1",
       timeApp: "93m",
-      imageUrl: 'https://unsplash.com/photos/dzKBQquyLBw',
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/girl.png',
       likes: 1782,
       comments: 252,
       shares: 26),
@@ -110,7 +115,8 @@ final List<Post> posts = [
       user: onLineUsers[2],
       caption: "ckeckout these cool 2",
       timeApp: "53m",
-      imageUrl: 'https://unsplash.com/photos/wE_TxxSrGBQ',
+      imageUrl:
+          'https://i.postimg.cc/sfc93QR2/roy-zeigerman-Ymu-OFJ7oa3-E-unsplash.jpg',
       likes: 1983,
       comments: 189,
       shares: 84),
@@ -118,7 +124,7 @@ final List<Post> posts = [
       user: onLineUsers[3],
       caption: "ckeckout these cool 3",
       timeApp: "83m",
-      imageUrl: 'https://unsplash.com/photos/INVFC49BbmY',
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/monarch.png',
       likes: 1852,
       comments: 352,
       shares: 92),
@@ -126,7 +132,7 @@ final List<Post> posts = [
       user: onLineUsers[4],
       caption: "ckeckout these cool 4",
       timeApp: "76m",
-      imageUrl: 'https://unsplash.com/photos/6Unon01hKwI',
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/pool.png',
       likes: 1456,
       comments: 134,
       shares: 56),
@@ -134,7 +140,8 @@ final List<Post> posts = [
       user: onLineUsers[5],
       caption: "ckeckout these cool 5",
       timeApp: "98m",
-      imageUrl: 'https://unsplash.com/photos/mwyhFb2WO-4',
+      imageUrl:
+          'https://i.postimg.cc/4dw7Rchk/mika-baumeister-Afk-KYr-NXUgk-unsplash.jpg',
       likes: 1523,
       comments: 75,
       shares: 16),
@@ -142,7 +149,7 @@ final List<Post> posts = [
       user: onLineUsers[6],
       caption: "ckeckout these cool 6",
       timeApp: "84m",
-      imageUrl: 'https://unsplash.com/photos/Nrxo3lzhQHI',
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/mountain.png',
       likes: 1875,
       comments: 122,
       shares: 46),
@@ -150,7 +157,7 @@ final List<Post> posts = [
       user: onLineUsers[7],
       caption: "ckeckout these cool 7",
       timeApp: "73m",
-      imageUrl: 'https://unsplash.com/photos/KLmSWe_pODM',
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/tulips.png',
       likes: 7342,
       comments: 52,
       shares: 66),
@@ -158,7 +165,7 @@ final List<Post> posts = [
       user: onLineUsers[8],
       caption: "ckeckout these cool 8",
       timeApp: "33m",
-      imageUrl: 'https://unsplash.com/photos/akIfbljbISI',
+      imageUrl: 'https://homepages.cae.wisc.edu/~ece533/images/watch.png',
       likes: 1822,
       comments: 172,
       shares: 96),
@@ -166,7 +173,7 @@ final List<Post> posts = [
       user: onLineUsers[9],
       caption: "ckeckout these cool 9",
       timeApp: "58m",
-      imageUrl: 'https://unsplash.com/photos/M_NbX5Afcys',
+      imageUrl: 'https://i.postimg.cc/wvdvjy4v/xps-B5r-NNk-Gt-RXI-unsplash.jpg',
       likes: 1052,
       comments: 172,
       shares: 96),
