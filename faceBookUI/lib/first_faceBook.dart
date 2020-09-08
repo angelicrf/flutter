@@ -10,8 +10,25 @@ import 'widgets.dart';
 class FirstFaceBook extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: CustomScrollView(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        body: Responsive(
+          mobile: _HomeScreenMobile(),
+          // work on it
+          desktop: _HomeScreenDesktop(),
+          // work on it
+          tablet: _HomeScreenDesktop(),
+        ),
+      ),
+    );
+  }
+}
+
+class _HomeScreenMobile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
       slivers: [
         SliverAppBar(
           brightness: Brightness.light,
@@ -61,6 +78,13 @@ class FirstFaceBook extends StatelessWidget {
           }, childCount: posts.length),
         )
       ],
-    ));
+    );
+  }
+}
+
+class _HomeScreenDesktop extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
