@@ -40,7 +40,14 @@ class PostContainer extends StatelessWidget {
             ),
           ),
           post.imageUrl != null
-              ? CachedNetworkImage(imageUrl: post.imageUrl)
+              ? Container(
+                  height: 250,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(post.imageUrl), fit: BoxFit.cover),
+                  ),
+                )
               : SizedBox.shrink(),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 12.0),
