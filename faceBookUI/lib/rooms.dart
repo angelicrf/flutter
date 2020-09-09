@@ -5,6 +5,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'config/palette.dart';
 import 'models/models.dart';
+import 'responsive_screen.dart';
 
 class Rooms extends StatelessWidget {
   final List<User> onLineUsers;
@@ -13,26 +14,35 @@ class Rooms extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 70.0,
-      color: Colors.red,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
-          itemCount: onLineUsers.length,
-          itemBuilder: (BuildContext context, int index) {
-            final User _user = onLineUsers[index];
-            if (index == 0) {
+    final isDesktop = Responsive.isDesktop(context);
+
+    return Card(
+      margin: EdgeInsets.symmetric(horizontal: isDesktop ? 5.0 : 0.0),
+      elevation: isDesktop ? 1.0 : 0.0,
+      shape: isDesktop
+          ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))
+          : null,
+      child: Container(
+        height: 70.0,
+        color: Colors.red,
+        child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
+            itemCount: onLineUsers.length,
+            itemBuilder: (BuildContext context, int index) {
+              final User _user = onLineUsers[index];
+              if (index == 0) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: _CreateRoomButton(),
+                );
+              }
               return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                child: _CreateRoomButton(),
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
+                child: ProfileAvatar(imageUrl: _user.imageUrl, isActive: true),
               );
-            }
-            return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: ProfileAvatar(imageUrl: _user.imageUrl, isActive: true),
-            );
-          }),
+            }),
+      ),
     );
   }
 }

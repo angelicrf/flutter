@@ -20,7 +20,9 @@ class Stories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200.0,
-      color: Colors.purpleAccent,
+      color: Responsive.isDesktop(context)
+          ? Colors.transparent
+          : Colors.purpleAccent,
       child: ListView.builder(
           padding: EdgeInsets.symmetric(horizontal: 7.0, vertical: 10.0),
           scrollDirection: Axis.horizontal,
@@ -68,7 +70,14 @@ class _StoryCard extends StatelessWidget {
           width: 110.0,
           height: double.infinity,
           decoration: BoxDecoration(
-              //color: Colors.black,
+              boxShadow: Responsive.isDesktop(context)
+                  ? [
+                      BoxShadow(
+                          color: Colors.black26,
+                          offset: Offset(0, 3),
+                          blurRadius: 4.0)
+                    ]
+                  : null,
               gradient: Palette.storyGradient,
               borderRadius: BorderRadius.circular(20.0)),
         ),

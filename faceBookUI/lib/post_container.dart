@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'models/models.dart';
+import 'screens.dart';
 
 class PostContainer extends StatelessWidget {
   final Post post;
@@ -14,46 +15,55 @@ class PostContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 5.0),
-      padding: EdgeInsets.symmetric(vertical: 8.0),
-      height: 600.0,
-      color: Colors.grey,
-      child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                _postHeader(post: post),
-                SizedBox(
-                  height: 4.0,
-                ),
-                Text(post.caption),
-                post.imageUrl != null
-                    ? SizedBox.shrink()
-                    : SizedBox(
-                        height: 7.0,
-                      )
-              ],
-            ),
-          ),
-          post.imageUrl != null
-              ? Container(
-                  height: 250,
-                  width: 350,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(post.imageUrl), fit: BoxFit.cover),
+    final isDesktop = Responsive.isDesktop(context);
+    return Card(
+      margin: EdgeInsets.symmetric(
+          vertical: 5.0, horizontal: isDesktop ? 5.0 : 0.0),
+      elevation: isDesktop ? 1.0 : 0.0,
+      shape: isDesktop
+          ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))
+          : null,
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 8.0),
+        height: 600.0,
+        color: Colors.grey,
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _postHeader(post: post),
+                  SizedBox(
+                    height: 4.0,
                   ),
-                )
-              : SizedBox.shrink(),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12.0),
-            child: _PostStats(post: post),
-          )
-        ],
+                  Text(post.caption),
+                  post.imageUrl != null
+                      ? SizedBox.shrink()
+                      : SizedBox(
+                          height: 7.0,
+                        )
+                ],
+              ),
+            ),
+            post.imageUrl != null
+                ? Container(
+                    height: 250,
+                    width: 350,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: NetworkImage(post.imageUrl),
+                          fit: BoxFit.cover),
+                    ),
+                  )
+                : SizedBox.shrink(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.0),
+              child: _PostStats(post: post),
+            )
+          ],
+        ),
       ),
     );
   }
